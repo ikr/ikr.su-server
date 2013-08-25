@@ -1,6 +1,40 @@
-# krechetov.net-server
+# About
 
 Automatic OS configuration for krechetov.net
+
+# Installation
+
+## VirtualBox
+
+### Prerequisites
+
+1. Install [VirtualBox and Vagrant](http://docs.vagrantup.com/v1/docs/getting-started/index.html)
+
+2. Run `vagrant plugin install vagrant-salt`
+
+3. Get the Ubuntu 12.04 Precise x86_64 base box: `vagrant box add precise64 http://files.vagrantup.com/precise64.box`
+
+### Host OS steps
+
+From this project's root run:
+
+    ~/prj/krechetov.net-server(master)$ vagrant up
+
+That will provision the development VM start-up. When the provisioning is done, you can ssh into the
+guest OS by
+
+    ~/prj/krechetov.net-server(master)$ vagrant ssh
+
+## Live
+
+### Prerequisites
+
+1. An Ubuntu 12.04 server
+
+2. Install the SaltStack software
+  * TBD
+  * TBD
+  * TBD
 
 # License: MIT
 
