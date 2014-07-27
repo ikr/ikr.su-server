@@ -1,44 +1,27 @@
 # About
 
-Automatic OS configuration for krechetov.net
+Automatic OS configuration for ikr.su
 
 # Installation
 
 ## VirtualBox
 
-### Prerequisites
+Have [VirtualBox and Vagrant](http://docs.vagrantup.com/v2/getting-started/index.html) installed.
 
-1. Install [VirtualBox and Vagrant](http://docs.vagrantup.com/v1/docs/getting-started/index.html)
+`~/prj/ikr.su-server(master)$ vagrant up`
 
-2. Run `vagrant plugin install vagrant-salt`
-
-3. Get the Ubuntu 12.04 Precise x86_64 base box: `vagrant box add precise64 http://files.vagrantup.com/precise64.box`
-
-### Host OS steps
-
-From this project's root run:
-
-    ~/prj/krechetov.net-server(master)$ vagrant up
-
-That will provision the development VM start-up. When the provisioning is done, you can ssh into the
-guest OS by
-
-    ~/prj/krechetov.net-server(master)$ vagrant ssh
+That will take a while. After the provisioning is done, open the local
+[Web site](http://localhost:8080/) in the browser.
 
 ## Live
 
-### Prerequisites
-
-1. An Ubuntu 12.04 server
-
-2. Install the SaltStack software
-  * TBD
+1. Install SaltStack minion software on a clean Debian Wheezy
   * TBD
   * TBD
 
 # License: MIT
 
-Copyright (c) 2013 Ivan Krechetov
+Copyright (c) 2014 Ivan Krechetov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
