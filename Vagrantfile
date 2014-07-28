@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 
 Vagrant::Config.run do |config|
-  config.vm.box = "wheezy"
+  config.vm.box = "wheezy64"
   config.vm.forward_port 80, 8080
 
   config.vm.share_folder "vagrant-root", "/vagrant", "."
