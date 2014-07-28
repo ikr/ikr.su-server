@@ -10,4 +10,5 @@ On Debian Wheezy
     # apt-get update
     # apt-get -t wheezy-backports install salt-minion
     # git clone https://github.com/ikr/ikr.su-server.git
+    # salt-call --local -c /root/ikr.su-server/salt state.highstate
     
