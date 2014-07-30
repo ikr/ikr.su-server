@@ -8,3 +8,5 @@ ikr:
     - shell: /bin/bash
     - home: /home/ikr
     - createhome: True
+    - groups:
+      - users
