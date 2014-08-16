@@ -6,9 +6,8 @@ mail-packages:
       - dovecot-imapd
 
 postfix-master-conf:
-  file.prepend:
+  file.patch:
     - name: /etc/postfix/master.cf
-    - sources:
-      - salt://mail/main.cf
+    - source: salt://mail/main.cf.diff
     - require:
       - pkg: mail-packages
