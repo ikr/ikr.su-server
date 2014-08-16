@@ -9,7 +9,7 @@ postfix-master-conf:
   file.patch:
     - name: /etc/postfix/master.cf
     - source: salt://mail/master.cf.diff
-    - hash: md5=dd05b4ce11a36f511b89eb9637bb9d18
+    - hash: md5=26b04e372ac0a04a748dbdc47681380e
     - options: --backup
     - require:
       - pkg: mail-packages
