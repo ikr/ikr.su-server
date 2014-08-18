@@ -6,10 +6,8 @@ mail-packages:
       - dovecot-imapd
 
 postfix-master-conf:
-  file.patch:
+  file.managed:
     - name: /etc/postfix/master.cf
-    - source: salt://mail/master.cf.diff
-    - hash: md5=26b04e372ac0a04a748dbdc47681380e
-    - options: --backup
+    - source: salt://mail/master.cf
     - require:
       - pkg: mail-packages
