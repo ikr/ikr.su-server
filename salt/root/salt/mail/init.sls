@@ -18,16 +18,14 @@ mail-packages:
       - dovecot-core
       - dovecot-imapd
 
-postfix-master-conf:
+/etc/postfix/master.cf:
   file.managed:
-    - name: /etc/postfix/master.cf
     - source: salt://mail/master.cf
     - require:
       - pkg: mail-packages
 
-postfix-main-conf:
+/etc/postfix/main.cf:
   file.managed:
-    - name: /etc/postfix/main.cf
     - source: salt://mail/main.cf
     - require:
       - pkg: mail-packages
