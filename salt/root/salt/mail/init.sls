@@ -1,7 +1,10 @@
-mailname:
+/etc/mailname:
   file.managed:
-    - name: /etc/mailname
     - source: salt://mail/mailname
+
+/etc/aliases:
+  file.managed:
+    - source: salt:://mail/aliases
 
 mail-packages:
   pkg.installed:
