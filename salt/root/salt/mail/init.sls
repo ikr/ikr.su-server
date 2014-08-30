@@ -11,3 +11,10 @@ postfix-master-conf:
     - source: salt://mail/master.cf
     - require:
       - pkg: mail-packages
+
+postfix-main-conf:
+  file.managed:
+    - name: /etc/postfix/main.cf
+    - source: salt://mail/main.cf
+    - require:
+      - pkg: mail-packages
