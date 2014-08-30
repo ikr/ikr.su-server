@@ -23,3 +23,9 @@ postfix-main-conf:
     - source: salt://mail/main.cf
     - require:
       - pkg: mail-packages
+
+/etc/ssl/certs/mail_ikr_su.pem:
+  file.exists
+
+/etc/ssl/private/mail_ikr_su.key:
+  file.exists
