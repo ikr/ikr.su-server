@@ -6,6 +6,11 @@
   file.managed:
     - source: salt://mail/aliases
 
+newaliases:
+  cmd.wait:
+    - watch:
+      - file: /etc/aliases
+
 mail-packages:
   pkg.installed:
     - pkgs:
