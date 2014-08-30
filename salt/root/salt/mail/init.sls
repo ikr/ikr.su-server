@@ -42,3 +42,9 @@ newaliases:
     - source: salt://mail/main.cf
     - require:
       - pkg: mail-packages
+
+/etc/dovecot/dovecot.conf:
+  file.managed:
+    - source: salt://mail/dovecot.conf
+    - require:
+      - pkg: mail-packages
