@@ -1,3 +1,8 @@
+mailname:
+  file.managed:
+    - name: /etc/mailname
+    - source: salt://mail/mailname
+
 mail-packages:
   pkg.installed:
     - pkgs:
