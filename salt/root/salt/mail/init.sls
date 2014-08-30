@@ -48,3 +48,28 @@ newaliases:
     - source: salt://mail/dovecot.conf
     - require:
       - pkg: mail-packages
+
+postfix:
+  service.running:
+    - enable: True
+    - require:
+      - pkg: mail-packages
+    - watch:
+      - file: /etc/ssl/certs/mail_ikr_su.pem
+      - file: /etc/ssl/private/mail_ikr_su.key
+      - file: /etc/mailname
+      - file: /etc/aliases
+      - file: /etc/postfix/master.cf
+      - file: /etc/postfix/main.cf
+
+dovecot:
+  service.running:
+    - enable: True
+    - require:
+      - pkg: mail-packages
+    - watch:
+      - file: /etc/ssl/certs/mail_ikr_su.pem
+      - file: /etc/ssl/private/mail_ikr_su.key
+      - file: /etc/mailname
+      - file: /etc/aliases
+      - file: /etc/dovecot/dovecot.conf
