@@ -19,3 +19,11 @@ https://github.com/ikr/ikr.su.git:
     - user: ikr
     - require:
       - file: /var/www/ikr.su
+
+/var/www/heap:
+  file.directory:
+    - user: ikr
+    - group: users
+    - dir_mode: 755
+    - require:
+      - file: /var/www
