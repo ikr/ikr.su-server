@@ -4,6 +4,7 @@ core_packages:
       - curl
       - nodejs
       - make
+      - gcc
 
 node:
   cmd.run:
