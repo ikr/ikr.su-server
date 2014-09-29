@@ -2,6 +2,10 @@ curl:
   pkg:
     - installed
 
+nodejs:
+  pkg:
+    - installed
+
 ikr:
   user.present:
     - fullname: Ivan Krechetov
