@@ -1,10 +1,8 @@
-curl:
-  pkg:
-    - installed
-
-nodejs:
-  pkg:
-    - installed
+core_packages:
+  pkg.installed:
+    - pkgs:
+      - curl
+      - nodejs
 
 node:
   cmd.run:
