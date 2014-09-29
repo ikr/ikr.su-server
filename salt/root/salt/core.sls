@@ -3,6 +3,7 @@ core_packages:
     - pkgs:
       - curl
       - nodejs
+      - make
 
 node:
   cmd.run:
