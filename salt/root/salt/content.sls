@@ -1,6 +1,6 @@
 ruby_packages:
   pkg.installed:
-    -pkgs:
+    - pkgs:
       - ruby
       - ruby-dev
 
