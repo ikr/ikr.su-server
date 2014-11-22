@@ -1,10 +1,13 @@
-ruby:
-  pkg.installed
+ruby_packages:
+  pkg.installed:
+    -pkgs:
+      - ruby
+      - ruby-dev
 
 jekyll:
   gem.installed:
     - require:
-      - pkg: ruby
+      - pkg: ruby_packages
 
 /var/www:
   file.directory:
