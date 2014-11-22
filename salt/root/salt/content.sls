@@ -54,3 +54,12 @@ https://github.com/ikr/ikr.su-blog.git:
     - dir_mode: 755
     - require:
       - file: /var/www
+
+jekyll_build:
+  cmd.run:
+    - name: jekyll build
+    - cwd: /var/www/ikr.su-blog
+    - user: ikr
+    - group: users
+    - watch:
+      - git: https://github.com/ikr/ikr.su-blog.git
