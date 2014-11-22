@@ -3,7 +3,6 @@ ruby:
 
 jekyll:
   gem.installed:
-    - user: ikr
     - require:
       - pkg: ruby
 
