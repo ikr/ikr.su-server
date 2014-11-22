@@ -1,3 +1,12 @@
+ruby:
+  pkg.installed
+
+jekyll:
+  gem.installed:
+    - user: ikr
+    - require:
+      - pkg: ruby
+
 /var/www:
   file.directory:
     - user: root
