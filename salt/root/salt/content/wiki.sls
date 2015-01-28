@@ -16,6 +16,7 @@ https://github.com/fedwiki/wiki-node.git:
 
 wiki_deps:
   npm.installed:
+    - name: ""
     - dir: /var/www/wiki-node
     - user: ikr
     - require:
