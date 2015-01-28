@@ -15,10 +15,11 @@ https://github.com/fedwiki/wiki-node.git:
       - file: /var/www/wiki-node
 
 wiki_deps:
-  npm.installed:
-    - name: ""
-    - dir: /var/www/wiki-node
+  cmd.wait:
+    - name: /usr/bin/npm install
+    - cwd: /var/www/wiki-node
     - user: ikr
+    - group: users
     - require:
       - cmd: npm
     - watch:
