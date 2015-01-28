@@ -26,7 +26,7 @@ https://github.com/ikr/ikr.su-blog.git:
       - file: /var/www/ikr.su-blog
 
 jekyll_build:
-  cmd.run:
+  cmd.wait:
     - name: jekyll build
     - cwd: /var/www/ikr.su-blog
     - user: ikr
