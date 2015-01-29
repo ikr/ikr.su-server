@@ -31,11 +31,18 @@ wiki_deps:
     - source: salt://content/fedwiki
     - mode: 755
 
+forever:
+  npm:
+    - installed
+    - require:
+      - cmd: npm
+
 fedwiki:
   service:
     - running
     - enable: True
     - require:
       - cmd: wiki_deps
+      - npm: forever
     - watch:
       - git: https://github.com/fedwiki/wiki-node.git
