@@ -24,3 +24,18 @@ wiki_deps:
       - cmd: npm
     - watch:
       - git: https://github.com/fedwiki/wiki-node.git
+
+/etc/init.d/fedwiki:
+  file:
+    - managed
+    - source: salt://content/fedwiki
+    - mode: 755
+
+fedwiki:
+  service:
+    - running
+    - enable: True
+    - require:
+      - cmd: wiki_deps
+    - watch:
+      - git: https://github.com/fedwiki/wiki-node.git
