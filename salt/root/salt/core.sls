@@ -32,7 +32,7 @@ ikr:
 lesya:
   user.present:
     - fullname: Olesya Krechetova
-      - shell: /bin/bash
+    - shell: /bin/bash
     - home: /home/lesya
     - createhome: True
     - groups:
