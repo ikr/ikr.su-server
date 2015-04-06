@@ -12,7 +12,7 @@ node:
     - unless: test -f /usr/bin/node
     - require:
       - pkg: core_packages
-    
+
 npm:
   cmd.run:
     - name: curl -sf https://www.npmjs.org/install.sh | sh
@@ -25,6 +25,15 @@ ikr:
     - fullname: Ivan Krechetov
     - shell: /bin/bash
     - home: /home/ikr
+    - createhome: True
+    - groups:
+      - users
+
+lesya:
+  user.present:
+    - fullname: Olesya Krechetova
+      - shell: /bin/bash
+    - home: /home/lesya
     - createhome: True
     - groups:
       - users
