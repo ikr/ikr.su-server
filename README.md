@@ -14,7 +14,7 @@ On Debian Wheezy
 
 # Notes
 
-On SMTP client configuration
+## On SMTP client configuration
 
 [l.erlacher+do](https://www.digitalocean.com/community/users/l-erlacher-do) _November 20, 2013_
 
@@ -25,6 +25,11 @@ On SMTP client configuration
     submission) on port 587. Make sure that your mail client uses port 587 with plain password auth
     and starttls.
 
-# Links
+### Links
 
 * [How To Set Up a Postfix E-Mail Server with Dovecot](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-postfix-e-mail-server-with-dovecot)
+
+## Updating the TLS certificate
+
+The same certificate is used by both the HTTP server, and the mail server, issued to the
+"mail.ikr.su" common name.
