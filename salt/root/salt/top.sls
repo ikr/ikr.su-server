@@ -1,6 +1,6 @@
 base:
   '*':
-    - core
+    - users
     - nginx
     - content
     - mail
