@@ -4,6 +4,9 @@ ruby_packages:
       - ruby
       - ruby-dev
 
+nodejs:
+  pkg.installed
+
 jekyll:
   gem.installed:
     - require:
@@ -33,3 +36,5 @@ jekyll_build:
     - group: users
     - watch:
       - git: https://github.com/ikr/ikr.su-blog.git
+    - require:
+      - pkg: nodejs
