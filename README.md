@@ -7,14 +7,32 @@ Automatic OS configuration for ikr.su
 ## Debian 9 (Stretch) VirtualBox
 
 * Create a new Debian Linux VM
-* Configure the port forwarding for ssh
+* Configure the port forwarding for ssh in the VM settings
 
 | Name | Protocol | Host IP | Host Port | Guest IP | Guest Port |
 | ---- | -------- | ------- | --------: | -------- | ---------: |
 | ssh  | TCP      |         | 2222      |          | 22         |
 
-* Install a bare minimal OS into the VM
+* Install a bare minimal OS into the VM (called `guest` below)
+* Log into the VM as an unprivileged user, and become the root
 
+```
+ikr@host:~$ ssh ikr@localhost -p 2222
+…
+ikr@guest:~$ su -
+…
+root@guest:~#
+```
+
+Bootstrap the system for the further automatic configuration
+
+```
+root@guest:~# apt-get install git salt-minion
+…
+root@guest:~# git clone https://github.com/ikr/ikr.su-server.git
+…
+root@guest:~# salt-call -c /root/ikr.su-server state.apply
+```
 
 # Notes
 
