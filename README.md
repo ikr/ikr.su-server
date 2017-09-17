@@ -4,13 +4,17 @@ Automatic OS configuration for ikr.su
 
 # Installation
 
-On Debian Wheezy
+## Debian 9 (Stretch) VirtualBox
 
-    # echo 'deb http://http.debian.net/debian wheezy-backports main' >> /etc/apt/sources.list
-    # apt-get update
-    # apt-get -t wheezy-backports install salt-minion
-    # git clone https://github.com/ikr/ikr.su-server.git
-    # salt-call -c /root/ikr.su-server/salt state.highstate
+* Create a new Debian Linux VM
+* Configure the port forwarding for ssh
+
+| Name | Protocol | Host IP | Host Port | Guest IP | Guest Port |
+| ---- | -------- | ------- | --------: | -------- | ---------: |
+| ssh  | TCP      |         | 2222      |          | 22         |
+
+* Install a bare minimal OS into the VM
+
 
 # Notes
 
