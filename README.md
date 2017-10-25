@@ -27,7 +27,8 @@ On Debian Wheezy
 
 ### Links
 
-* [How To Set Up a Postfix E-Mail Server with Dovecot](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-postfix-e-mail-server-with-dovecot)
+* [How To Set Up a Postfix E-Mail Server with Dovecot](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-postfix-e-mail-server-with-dovecot) — the main configuration prototype
+* [Configure Postfix TLS with a Free StartSSL Certificate](https://www.stevejenkins.com/blog/2011/09/how-to-use-a-free-startssl-certificate-in-postfix-for-ssltls/) — helped to make Gmail TLS-happy
 
 ## Updating the TLS certificate
 
