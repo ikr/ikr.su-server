@@ -1,4 +1,0 @@
-include:
-  - .root
-  - .blog
-  - .heap
