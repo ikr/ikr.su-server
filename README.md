@@ -31,7 +31,7 @@ root@guest:~# apt install git salt-minion
 …
 root@guest:~# git clone https://github.com/ikr/ikr.su-server.git
 …
-root@guest:~# salt-call -c /root/ikr.su-server state.apply
+root@guest:~# salt-call -c /root/ikr.su-server/salt state.apply
 ```
 
 # Notes
