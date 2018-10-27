@@ -27,7 +27,7 @@ root@guest:~#
 Bootstrap the system for the further automatic configuration
 
 ```
-root@guest:~# apt-get install git salt-minion
+root@guest:~# apt install git salt-minion
 …
 root@guest:~# git clone https://github.com/ikr/ikr.su-server.git
 …
