@@ -32,12 +32,14 @@ newaliases:
 /etc/postfix/main.cf:
   file.managed:
     - source: salt://mail/main.cf
+    - template: jinja
     - require:
       - pkg: mail-packages
 
 /etc/dovecot/dovecot.conf:
   file.managed:
     - source: salt://mail/dovecot.conf
+    - template: jinja
     - require:
       - pkg: mail-packages
 
@@ -51,6 +53,9 @@ postfix:
       - file: /etc/aliases
       - file: /etc/postfix/master.cf
       - file: /etc/postfix/main.cf
+{% if grains.virtual != 'VirtualBox' %}
+      - cmd: initial_lets_encrypt_cert
+{% endif %}
 
 dovecot:
   service.running:
@@ -61,3 +66,6 @@ dovecot:
       - file: /etc/mailname
       - file: /etc/aliases
       - file: /etc/dovecot/dovecot.conf
+{% if grains.virtual != 'VirtualBox' %}
+      - cmd: initial_lets_encrypt_cert
+{% endif %}

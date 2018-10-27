@@ -10,8 +10,14 @@ inet_interfaces = all
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 
+{% if grains.virtual == 'VirtualBox' %}
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+{% else %}
 smtpd_tls_cert_file=/var/lib/dehydrated/certs/mail.ikr.su/fullchain.pem
 smtpd_tls_key_file=/var/lib/dehydrated/certs/mail.ikr.su/privkey.pem
+{% endif %}
+
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
