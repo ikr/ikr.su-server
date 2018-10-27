@@ -5,6 +5,7 @@ ruby_packages:
       - ruby-dev
       - make
       - gcc
+      - g++
 
 nodejs:
   pkg.installed
