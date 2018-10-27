@@ -32,12 +32,12 @@ jekyll_build:
   cmd.wait:
     - name: jekyll build
     - cwd: /var/www/ikr.su-blog
-    - user: ikr
-    - group: users
+    - runas: ikr
     - watch:
       - git: https://github.com/ikr/ikr.su-blog.git
     - require:
       - pkg: nodejs
+      - gem: jekyll
 
 /var/www/heap:
   file.directory:
