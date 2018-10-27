@@ -1,22 +1,14 @@
-/etc/ssl/certs/mail_ikr_su.pem:
-  file.exists
-
-/etc/ssl/private/mail_ikr_su.key:
-  file.exists
-
 mail-packages:
   pkg.installed:
     - pkgs:
       - postfix
       - dovecot-core
       - dovecot-imapd
-    - require:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
 
 /etc/mailname:
   file.managed:
-    - source: salt://mail/mailname
+    - contents:
+      - ikr.su
     - require:
       - pkg: mail-packages
 
@@ -55,8 +47,6 @@ postfix:
     - require:
       - pkg: mail-packages
     - watch:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
       - file: /etc/mailname
       - file: /etc/aliases
       - file: /etc/postfix/master.cf
@@ -68,8 +58,6 @@ dovecot:
     - require:
       - pkg: mail-packages
     - watch:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
       - file: /etc/mailname
       - file: /etc/aliases
       - file: /etc/dovecot/dovecot.conf
