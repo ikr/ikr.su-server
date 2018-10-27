@@ -3,6 +3,7 @@ ruby_packages:
     - pkgs:
       - ruby
       - ruby-dev
+      - make
 
 nodejs:
   pkg.installed
