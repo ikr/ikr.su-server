@@ -25,7 +25,6 @@ jekyll:
 
 https://github.com/ikr/ikr.su-blog.git:
   git.latest:
-    - force_clone: True
     - rev: master
     - target: /var/www/ikr.su-blog
     - user: ikr
@@ -42,6 +41,7 @@ jekyll_build:
     - require:
       - pkg: nodejs
       - gem: jekyll
+      - file: /var/www/ikr.su-blog
 
 /var/www/heap:
   file.directory:
@@ -67,7 +67,6 @@ jekyll_build:
 
 https://github.com/ikr/ikr.su.git:
   git.latest:
-    - force_clone: True
     - rev: master
     - target: /var/www/ikr.su
     - user: ikr
