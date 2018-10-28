@@ -4,3 +4,4 @@ user_utils:
       - bash-completion
       - man
       - sudo
+      - sshpass
