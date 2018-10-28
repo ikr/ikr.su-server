@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ]
+then
+    echo "Usage:"
+    echo "$ PASSWORD_IKR=… PASSWORD_LESYA=… ./backup-to-this-vbox"
+    exit 1
+fi
+
+rm -r /var/mail/ikr
+
+doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never backup -R -u ikr imapc:
+
+rm -r /var/mail/lesya
+
+doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never backup -R -u lesya imapc:
