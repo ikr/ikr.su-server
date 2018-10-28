@@ -6,7 +6,7 @@ Automatic OS configuration for ikr.su
 
 ## Debian 9 (Stretch) VirtualBox
 
-* Create a new Debian Linux VM
+* Create a new Debian Linux VM **with a disk space large enough**
 * Configure the port forwarding for ssh in the VM settings
 
 | Name | Protocol | Host IP | Host Port | Guest IP | Guest Port |
