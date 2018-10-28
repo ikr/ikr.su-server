@@ -25,6 +25,7 @@ jekyll:
 
 https://github.com/ikr/ikr.su-blog.git:
   git.latest:
+    - force_clone: True
     - rev: master
     - target: /var/www/ikr.su-blog
     - user: ikr
@@ -66,6 +67,7 @@ jekyll_build:
 
 https://github.com/ikr/ikr.su.git:
   git.latest:
+    - force_clone: True
     - rev: master
     - target: /var/www/ikr.su
     - user: ikr
