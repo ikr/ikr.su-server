@@ -6,3 +6,4 @@ user_utils:
       - sudo
       - sshpass
       - mc
+      - time
