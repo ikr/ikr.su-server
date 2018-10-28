@@ -17,8 +17,8 @@ test -d /home/lesya/mail && rm -r /home/lesya/mail
 
 doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never backup -R -u lesya imapc:
 
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/*.git /home/ikr
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/books /home/ikr
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/estimates-template /home/ikr
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/react-* /home/ikr
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/var/www/heap/* /var/www/heap
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -prq ikr.su:/home/ikr/*.git /home/ikr
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -prq ikr.su:/home/ikr/books /home/ikr
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -prq ikr.su:/home/ikr/estimates-template /home/ikr
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -prq ikr.su:/home/ikr/react-* /home/ikr
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -prq ikr.su:/var/www/heap/* /var/www/heap
