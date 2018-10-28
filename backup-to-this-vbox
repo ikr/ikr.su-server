@@ -21,4 +21,4 @@ sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.s
 sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/books /home/ikr
 sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/estimates-template /home/ikr
 sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/home/ikr/react-* /home/ikr
-sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/var/www/heap/* /var/www
+sudo -u ikr sshpass -p "$PASSWORD_IKR" scp -o StrictHostKeyChecking=no -pr ikr.su:/var/www/heap/* /var/www/heap
