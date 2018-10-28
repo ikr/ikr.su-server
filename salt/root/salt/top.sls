@@ -4,3 +4,4 @@ base:
     - web-server
     - content
     - mail
+    - utils
