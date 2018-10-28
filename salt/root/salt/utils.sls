@@ -5,3 +5,4 @@ user_utils:
       - man
       - sudo
       - sshpass
+      - mc
