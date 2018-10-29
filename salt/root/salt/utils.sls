@@ -7,3 +7,4 @@ user_utils:
       - sshpass
       - mc
       - time
+      - rsync
