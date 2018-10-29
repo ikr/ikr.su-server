@@ -21,4 +21,4 @@ rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o Use
 rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ikr.su:/home/ikr/books /home/ikr
 rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ikr.su:/home/ikr/estimates-template /home/ikr
 rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ikr.su:/home/ikr/react-* /home/ikr
-rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ikr.su:/var/www/heap/* /var/www/heap
+rsync -avzl -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ikr.su:/var/www/heap/* /var/www/heap
