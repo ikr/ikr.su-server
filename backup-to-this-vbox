@@ -7,12 +7,12 @@ then
     exit 1
 fi
 
-test -t /var/mail/ikr && rm -r /var/mail/ikr
+test -f /var/mail/ikr && rm /var/mail/ikr
 test -d /home/ikr/mail && rm -r /home/ikr/mail
 
 doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u ikr imapc:
 
-test -t /var/mail/lesya && rm -r /var/mail/lesya
+test -f /var/mail/lesya && rm /var/mail/lesya
 test -d /home/lesya/mail && rm -r /home/lesya/mail
 
 doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -R -u lesya imapc:
