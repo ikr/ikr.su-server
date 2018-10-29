@@ -8,3 +8,4 @@ user_utils:
       - mc
       - time
       - rsync
+      - tree
