@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$DESTINATION_IP" == "" ] || [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ]
+then
+    echo "Usage:"
+    echo "$ DESTINATION_IP=… PASSWORD_IKR=… PASSWORD_LESYA=… ./restore-from-this-vbox"
+    exit 1
+fi
+
+doveadm -o imapc_host="$DESTINATION_IP" -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u ikr imapc:
+
+doveadm -o imapc_host="$DESTINATION_IP" -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u lesya imapc:
+
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/*.git "$DESTINATION_IP":/home/ikr
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/books "$DESTINATION_IP":/home/ikr
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/estimates-template "$DESTINATION_IP":/home/ikr
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/react-* "$DESTINATION_IP":/home/ikr
+rsync -avzl -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /var/www/heap/* "$DESTINATION_IP":/var/www/heap
