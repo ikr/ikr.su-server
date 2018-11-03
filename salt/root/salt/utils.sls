@@ -9,3 +9,4 @@ user_utils:
       - time
       - rsync
       - tree
+      - moreutils
