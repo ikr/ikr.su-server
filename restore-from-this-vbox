@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ] || ["$1" == ""]
+if [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ] || [ $# -ne 1 ]
 then
     echo "Usage:"
     echo "$ PASSWORD_IKR=… PASSWORD_LESYA=… ./restore-from-this-vbox DESTINATION-IP-ADDRESS"
