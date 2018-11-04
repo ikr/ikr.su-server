@@ -59,4 +59,19 @@ ssl_inc:
     - onlyif: test -f /etc/nginx/conf.d/ssl.inc && cat /etc/nginx/conf.d/ssl.inc | grep -F ssl-cert-snakeoil
     - require:
       - cmd: initial_lets_encrypt_cert
+
+root_email_for_cron:
+  cron.env_present:
+    - user: root
+    - name: MAILTO
+    - value: ikr@ikr.su
+
+lets_encrypt_cert_update:
+  cron.present:
+    - name: chronic /usr/bin/dehydrated --cron && systemctl reload nginx && systemctl reload dovecot && systemctl reload postfix
+    - identifier: lets_encrypt_cert_update
+    - user: root
+    - dayweek: 0
+    - hour: 1
+    - minute: 37
 {% endif %}
