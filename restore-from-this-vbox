@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ]
+if [ "$PASSWORD_IKR" == "" ] || [ "$PASSWORD_LESYA" == "" ] || ["$1" == ""]
 then
     echo "Usage:"
-    echo "$ PASSWORD_IKR=… PASSWORD_LESYA=… ./restore-from-this-vbox"
+    echo "$ PASSWORD_IKR=… PASSWORD_LESYA=… ./restore-from-this-vbox DESTINATION-IP-ADDRESS"
     exit 1
 fi
 
-doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u ikr imapc:
+doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u ikr imapc:
 
-doveadm -o imapc_host=mail.ikr.su -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u lesya imapc:
+doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u lesya imapc:
 
-rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/*.git ikr.su:/home/ikr
-rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/books ikr.su:/home/ikr
-rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/estimates-template ikr.su:/home/ikr
-rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/react-* ikr.su:/home/ikr
-rsync -avzl -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /var/www/heap/* ikr.su:/var/www/heap
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/*.git "$1:/home/ikr"
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/books "$1:/home/ikr"
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/estimates-template "$1:/home/ikr"
+rsync -avz -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/react-* "$1:/home/ikr"
+rsync -avzl -e "sshpass -p '$PASSWORD_IKR' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /var/www/heap/* "$1:/var/www/heap"
