@@ -7,9 +7,9 @@ then
     exit 1
 fi
 
-doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u ikr imapc:
+doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_IKR" -o imapc_user=ikr -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v sync -1 -u ikr imapc:
 
-doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v backup -u lesya imapc:
+doveadm -o imapc_ssl_verify=no -o imapc_host="$1" -o imapc_port=993 -o "imapc_password=$PASSWORD_LESYA" -o imapc_user=lesya -o imapc_ssl=imaps -o ssl_client_ca_dir=/etc/ssl/certs/ -o mail_fsync=never -v sync -1 -u lesya imapc:
 
 rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/*.git "ikr@$1:/home/ikr"
 rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress /home/ikr/books "ikr@$1:/home/ikr"
