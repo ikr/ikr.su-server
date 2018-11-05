@@ -1,6 +1,7 @@
 base:
   '*':
     - users
-    - nginx
+    - web-server
     - content
     - mail
+    - utils

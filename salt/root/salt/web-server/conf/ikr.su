@@ -2,8 +2,24 @@ source_charset UTF-8;
 gzip_types text/plain text/css application/javascript application/json application/x-javascript text/javascript text/xml application/xml application/xml+rss;
 
 server {
-    listen 80 default_server;
-    server_name _;
+    listen 80;
+    server_name ikr.su mail.ikr.su;
+
+    include /etc/nginx/conf.d/*.http.location.inc;
+
+    location / {
+        return 301 https://ikr.su$request_uri;
+    }
+}
+
+server {
+    listen 443 default_server ssl;
+    server_name ikr.su;
+
+    ssl on;
+    include /etc/nginx/conf.d/ssl.inc;
+    include /etc/nginx/conf.d/*.location.inc;
+
     index index.html;
 
     location / {

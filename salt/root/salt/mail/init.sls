@@ -1,22 +1,14 @@
-/etc/ssl/certs/mail_ikr_su.pem:
-  file.exists
-
-/etc/ssl/private/mail_ikr_su.key:
-  file.exists
-
 mail-packages:
   pkg.installed:
     - pkgs:
       - postfix
       - dovecot-core
       - dovecot-imapd
-    - require:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
 
 /etc/mailname:
   file.managed:
-    - source: salt://mail/mailname
+    - contents:
+      - ikr.su
     - require:
       - pkg: mail-packages
 
@@ -40,12 +32,14 @@ newaliases:
 /etc/postfix/main.cf:
   file.managed:
     - source: salt://mail/main.cf
+    - template: jinja
     - require:
       - pkg: mail-packages
 
 /etc/dovecot/dovecot.conf:
   file.managed:
     - source: salt://mail/dovecot.conf
+    - template: jinja
     - require:
       - pkg: mail-packages
 
@@ -55,12 +49,13 @@ postfix:
     - require:
       - pkg: mail-packages
     - watch:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
       - file: /etc/mailname
       - file: /etc/aliases
       - file: /etc/postfix/master.cf
       - file: /etc/postfix/main.cf
+{% if grains.virtual != 'VirtualBox' %}
+      - cmd: initial_lets_encrypt_cert
+{% endif %}
 
 dovecot:
   service.running:
@@ -68,8 +63,9 @@ dovecot:
     - require:
       - pkg: mail-packages
     - watch:
-      - file: /etc/ssl/certs/mail_ikr_su.pem
-      - file: /etc/ssl/private/mail_ikr_su.key
       - file: /etc/mailname
       - file: /etc/aliases
       - file: /etc/dovecot/dovecot.conf
+{% if grains.virtual != 'VirtualBox' %}
+      - cmd: initial_lets_encrypt_cert
+{% endif %}
