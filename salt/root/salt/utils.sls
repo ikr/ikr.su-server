@@ -10,3 +10,4 @@ user_utils:
       - rsync
       - tree
       - moreutils
+      - telnet
