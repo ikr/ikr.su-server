@@ -1,5 +1,5 @@
 nginx:
-  pkg.installed
+  pkg.installed: []
   service.running:
     -require:
       - pkg: nginx
