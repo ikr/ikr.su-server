@@ -35,6 +35,10 @@ server {
     }
 
     location /resume.html {
-        return 301 /resume.pdf;
+        return 301 /cv.pdf;
+    }
+
+    location /resume.pdf {
+        return 301 /cv.pdf;
     }
 }
