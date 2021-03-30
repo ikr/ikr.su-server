@@ -1,7 +1,7 @@
 nginx:
   pkg.installed: []
   service.running:
-    -require:
+    - require:
       - pkg: nginx
 
 dehydrated:
