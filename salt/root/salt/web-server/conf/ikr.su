@@ -23,22 +23,10 @@ server {
     index index.html;
 
     location / {
-        root /var/www/ikr.su;
-    }
-
-    location /blog {
-        alias /var/www/ikr.su-blog/_site;
+        return 301 https://ikr.li$request_uri;
     }
 
     location /h {
         alias /var/www/heap;
-    }
-
-    location /resume.html {
-        return 301 /cv.pdf;
-    }
-
-    location /resume.pdf {
-        return 301 /cv.pdf;
     }
 }
