@@ -5,6 +5,11 @@ server {
     listen 80;
     server_name ikr.su mail.ikr.su;
 
+    location ^~ /.well-known/acme-challenge {
+        auth_basic "off";
+        alias /var/lib/dehydrated/acme-challenges;
+    }
+
     include /etc/nginx/conf.d/*.http.location.inc;
 
     location / {
